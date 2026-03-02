@@ -1,28 +1,69 @@
 /**
- * OOPSBannerApp UC5 - Inline Array Initialization
- * This version combines array declaration and initialization into a single 
- * statement using inline array literal syntax, making the code more concise.
+ * OOPSBannerApp UC6 - Static Functions
+ * This version refactors the code by moving the character patterns 
+ * into dedicated static helper methods, improving reusability and encapsulation.
  *
  * @author Developer
- * @version 5.0
+ * @version 6.0
  */
 public class OOPSBannerApp {
+
     public static void main(String[] args) {
 
-        // Inline declaration + initialization using String.join()
-        String[] banner = {
-            String.join(" ", "  *****  ", "  *****  ", " ******  ", "  *****  "),
-            String.join(" ", " *     * ", " *     * ", " *     * ", " *     * "),
-            String.join(" ", " *     * ", " *     * ", " *     * ", " *       "),
-            String.join(" ", " *     * ", " *     * ", " ******  ", "  *****  "),
-            String.join(" ", " *     * ", " *     * ", " *       ", "       * "),
-            String.join(" ", " *     * ", " *     * ", " *       ", " *     * "),
-            String.join(" ", "  *****  ", "  *****  ", " *       ", "  *****  ")
-        };
+        // Array initialization via methods
+        String[] banner = new String[7];
 
-        // Enhanced for-loop to print banner
+        String[] o = getOPattern();
+        String[] p = getPPattern();
+        String[] s = getSPattern();
+
+        // Build OOPS (O O P S)
+        for (int i = 0; i < 7; i++) {
+            banner[i] = o[i] + o[i] + p[i] + s[i];
+        }
+
+        // Loop-Based Rendering (Enhanced for loop)
         for (String line : banner) {
             System.out.println(line);
         }
+    }
+
+    // Helper Method for O
+    public static String[] getOPattern() {
+        return new String[]{
+                String.join("", "  *****  "),
+                String.join("", " *     * "),
+                String.join("", "*       *"),
+                String.join("", "*       *"),
+                String.join("", "*       *"),
+                String.join("", " *     * "),
+                String.join("", "  *****  ")
+        };
+    }
+
+    // Helper Method for P
+    public static String[] getPPattern() {
+        return new String[]{
+                String.join("", " ******  "),
+                String.join("", " *     * "),
+                String.join("", " *     * "),
+                String.join("", " ******  "),
+                String.join("", " *       "),
+                String.join("", " *       "),
+                String.join("", " *       ")
+        };
+    }
+
+    // Helper Method for S
+    public static String[] getSPattern() {
+        return new String[]{
+                String.join("", "  *****  "),
+                String.join("", " *     * "),
+                String.join("", " *       "),
+                String.join("", "  *****  "),
+                String.join("", "        *"),
+                String.join("", " *     * "),
+                String.join("", "  *****  ")
+        };
     }
 }
